@@ -351,6 +351,8 @@ html:not(.reduced) .card.is-in:hover .card__img { transform: scale(1.045); }
 .pcard__alt { opacity: 0; transform: scale(1.04); }
 .pcard:hover .pcard__alt, .pcard:focus-visible .pcard__alt { opacity: 1; transform: scale(1); }
 .pcard:hover .pcard__img { transform: scale(1.03); }
+.pcard__media .tag { transition: opacity .5s var(--ease); }
+.pcard:hover .pcard__alt ~ .tag, .pcard:focus-visible .pcard__alt ~ .tag { opacity: 0; }
 .pcard__meta { padding-top: 18px; }
 .pcard__name { font: 400 26px/1.2 var(--serif); }
 .pcard__line { font-size: 14px; color: var(--ink-soft); margin-top: 4px; max-width: 40ch; }
