@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ARDEM — Crafted to Become Eternal</title>
+<meta name="description" content="ARDEM fine jewelry. Rings, necklaces, earrings and bracelets made to be kept. Crafted to Become Eternal.">
+<meta name="theme-color" content="#16120f">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='10' fill='%2316120f'/%3E%3Cg fill='none' stroke='%23d4b27a' stroke-linecap='round'%3E%3Cpath d='M9 41 24 6l15 35' stroke-width='2.2'/%3E%3Cpath d='M14 30c6-4.6 14-4.6 20 0-6 4.4-14 4.4-20 0Z' stroke-width='1.6'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter+Tight:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="css/ardem.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="goldline" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e9d3a4"/><stop offset=".5" stop-color="#c49a5a"/><stop offset="1" stop-color="#8c6a34"/>
+    </linearGradient>
+    <symbol id="monogram" viewBox="0 0 48 48">
+      <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M8 42 24 5l16 37" stroke-width="1.5"/>
+        <path d="M13 42c6.2-13.2 9.4-22.6 11-30.4 1.6 7.8 4.8 17.2 11 30.4" stroke-width=".85" opacity=".75"/>
+        <path d="M13.5 30.2c6.6-5.2 14.4-5.2 21 0-6.6 4.6-14.4 4.6-21 0Z" stroke-width="1.25"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<a class="skip-link" href="#main" data-skip>Skip to content</a>
+
+<header class="nav" data-theme="dark">
+  <a class="nav__brand" href="#home" aria-label="ARDEM home">
+    <svg class="nav__mono" aria-hidden="true"><use href="#monogram"/></svg>
+    <span class="nav__word">ARDEM</span>
+  </a>
+  <nav class="nav__links" aria-label="Primary">
+    <a href="#collections" data-nav-link="collections">Collections</a>
+    <a href="#craftsmanship" data-nav-link="craftsmanship">Craftsmanship</a>
+    <a href="#our-story" data-nav-link="our-story">Our story</a>
+    <a href="#appointment" data-nav-link="appointment">Private appointment</a>
+  </nav>
+  <div class="nav__actions">
+    <button class="btn btn--ghost btn--sm magnetic" type="button" data-reserve><span>Reserve</span></button>
+    <button class="nav__menu" type="button" aria-expanded="false" aria-controls="menu" data-menu-toggle>
+      <span class="nav__menu-label">Menu</span>
+      <span class="nav__menu-lines" aria-hidden="true"><i></i><i></i></span>
+    </button>
+  </div>
+</header>
+
+<div class="menu" id="menu" hidden>
+  <div class="menu__inner">
+    <nav aria-label="Menu">
+      <ol class="menu__list">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#collections">Collections</a></li>
+        <li><a href="#craftsmanship">Craftsmanship</a></li>
+        <li><a href="#our-story">Our story</a></li>
+        <li><a href="#appointment">Private appointment</a></li>
+      </ol>
+    </nav>
+    <div class="menu__foot">
+      <div class="menu__cats">
+        <a href="#rings">Rings</a><a href="#necklaces">Necklaces</a><a href="#earrings">Earrings</a><a href="#bracelets">Bracelets</a>
+      </div>
+      <button class="btn btn--ruby" type="button" data-reserve>Reserve your piece</button>
+    </div>
+  </div>
+</div>
+
+<main id="main" tabindex="-1"><div id="view"></div></main>
+
+<footer class="footer" data-nav="dark">
+  <div class="footer__top">
+    <div class="footer__brand">
+      <svg class="footer__mono" aria-hidden="true"><use href="#monogram"/></svg>
+      <p class="footer__word">ARDEM</p>
+      <p class="footer__tag">Crafted to Become Eternal.</p>
+    </div>
+    <nav class="footer__cols" aria-label="Footer">
+      <div><h2>Collections</h2><a href="#rings">Rings</a><a href="#necklaces">Necklaces</a><a href="#earrings">Earrings</a><a href="#bracelets">Bracelets</a></div>
+      <div><h2>The house</h2><a href="#our-story">Our story</a><a href="#craftsmanship">Craftsmanship</a><a href="#piece-eternal-solitaire">The signature</a></div>
+      <div><h2>Assistance</h2><a href="#appointment">Book a private appointment</a><button type="button" class="linkish" data-reserve>Reserve a piece</button><a href="#craftsmanship" data-scroll-to="care">Caring for your jewelry</a></div>
+    </nav>
+  </div>
+  <div class="footer__base">
+    <p>© 2026 ARDEM. All rights reserved.</p>
+    <p>Jewelry imagery on this site is digitally rendered, except where marked as photographed.</p>
+  </div>
+</footer>
+
+<div class="curtain" aria-hidden="true"><svg class="curtain__mono"><use href="#monogram"/></svg></div>
+
+<div class="modal" id="reserve" role="dialog" aria-modal="true" aria-labelledby="reserve-title" hidden>
+  <div class="modal__scrim" data-close></div>
+  <div class="modal__panel" tabindex="-1">
+    <button class="modal__close" type="button" data-close aria-label="Close reservation"><span aria-hidden="true"></span></button>
+    <div class="modal__media" aria-hidden="true"><img alt="" data-res-img></div>
+    <div class="modal__body">
+      <form class="form" novalidate data-res-form>
+        <p class="kicker">Reservation</p>
+        <h2 id="reserve-title" class="modal__title">Reserve your piece</h2>
+        <p class="modal__lead">Tell us which piece you would like to hold. An advisor will confirm availability, sizing and next steps with you.</p>
+        <div class="form__error-summary" role="alert" aria-live="assertive" data-error-summary hidden></div>
+        <div class="form__row form__row--2">
+          <div class="field">
+            <label for="res-piece">Piece</label>
+            <select id="res-piece" name="piece" data-res-piece></select>
+          </div>
+          <div class="field">
+            <label for="res-variant">Variant</label>
+            <select id="res-variant" name="variant" data-res-variant></select>
+          </div>
+        </div>
+        <div class="field" data-size-field>
+          <label for="res-size">Ring size <span class="optl">optional</span></label>
+          <select id="res-size" name="size">
+            <option value="">Not sure yet — we'll measure together</option>
+          </select>
+        </div>
+        <div class="form__row form__row--2">
+          <div class="field">
+            <label for="res-name">Full name</label>
+            <input id="res-name" name="name" autocomplete="name" required aria-describedby="res-name-err">
+            <p class="field__err" id="res-name-err"></p>
+          </div>
+          <div class="field">
+            <label for="res-email">Email</label>
+            <input id="res-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="res-email-err">
+            <p class="field__err" id="res-email-err"></p>
+          </div>
+        </div>
+        <div class="form__row form__row--2">
+          <div class="field">
+            <label for="res-phone">Phone <span class="optl" data-phone-opt>optional</span></label>
+            <input id="res-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" aria-describedby="res-phone-err">
+            <p class="field__err" id="res-phone-err"></p>
+          </div>
+          <fieldset class="field field--choice">
+            <legend>Preferred contact</legend>
+            <div class="choice-row">
+              <label class="choice"><input type="radio" name="contact" value="email" checked><span>Email</span></label>
+              <label class="choice"><input type="radio" name="contact" value="phone"><span>Phone</span></label>
+            </div>
+          </fieldset>
+        </div>
+        <div class="field">
+          <label for="res-notes">Notes <span class="optl">optional</span></label>
+          <textarea id="res-notes" name="notes" rows="3" placeholder="An occasion, a date, an engraving idea…"></textarea>
+        </div>
+        <label class="check">
+          <input type="checkbox" name="consent" aria-describedby="res-consent-err">
+          <span>I agree that ARDEM may contact me about this reservation.</span>
+        </label>
+        <p class="field__err" id="res-consent-err"></p>
+        <div class="form__actions">
+          <button class="btn btn--ruby magnetic" type="submit" data-res-submit><span>Reserve piece</span></button>
+          <p class="form__fine">No payment is taken. A reservation holds your interest while an advisor confirms the details.</p>
+        </div>
+      </form>
+      <div class="success" data-res-success hidden tabindex="-1">
+        <svg class="success__mono" aria-hidden="true"><use href="#monogram"/></svg>
+        <p class="kicker">Reservation</p>
+        <h2 class="modal__title" data-success-title>Request received</h2>
+        <p class="success__ref">Reference <strong data-success-ref></strong></p>
+        <dl class="success__summary" data-success-summary></dl>
+        <p class="success__note" data-success-note></p>
+        <div class="form__actions">
+          <button class="btn btn--dark" type="button" data-close>Continue exploring</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cursor" aria-hidden="true"><span class="cursor__ring"><span class="cursor__label"></span></span><span class="cursor__dot"></span></div>
+<div class="toast" role="status" aria-live="polite" hidden></div>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
