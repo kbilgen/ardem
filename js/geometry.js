@@ -1,5 +1,5 @@
 // ARDEM — procedural jewelry geometry (gem cuts, bands, claws, tubes, chains)
-import { v3 } from './math.js?v=20261121c';
+import { v3 } from './math.js?v=20261121d';
 
 const TAU = Math.PI * 2;
 

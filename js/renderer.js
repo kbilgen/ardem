@@ -1,6 +1,6 @@
 // ARDEM — WebGL2 jewelry renderer: physically based gold, faceted gems with dispersion,
 // procedural studio lighting, glints, gold dust and photographic backdrops.
-import { m4 } from './math.js?v=20261121c';
+import { m4 } from './math.js?v=20261121d';
 
 const ENV = /* glsl */ `
 uniform float uEnvRot;
@@ -261,8 +261,9 @@ void main(){
     v = exp(-r * r * 6.0) * 0.9 + exp(-r * 2.2) * 0.25;
   }
   v *= smoothstep(1.0, 0.7, r) * uIntensity;
-  // premultiplied, alpha 0 => additive over the page
-  o = vec4(uColor * v, 0.0);
+  // valid premultiplied colour (alpha >= rgb) so every compositor keeps the glow
+  vec3 glow = uColor * v;
+  o = vec4(glow, max(max(glow.r, glow.g), glow.b));
 }`;
 
 const DUST_VS = /* glsl */ `#version 300 es
@@ -290,7 +291,7 @@ out vec4 o;
 void main(){
   vec2 q = gl_PointCoord * 2.0 - 1.0;
   float v = exp(-dot(q, q) * 4.0) * vTw * uAlpha;
-  o = vec4(vec3(1.0, 0.82, 0.55) * v, 0.0);
+  o = vec4(vec3(1.0, 0.82, 0.55) * v, v);
 }`;
 
 const BACKDROP_VS = /* glsl */ `#version 300 es

@@ -1,5 +1,5 @@
 // ARDEM — page templates. Each view renders HTML; app.js mounts behaviour.
-import { PRODUCTS, COLLECTIONS, SIGNATURE_VARIANTS, PROCESS, MARQUEE, byId, inCategory } from './data.js?v=20261121c';
+import { PRODUCTS, COLLECTIONS, SIGNATURE_VARIANTS, PROCESS, MARQUEE, byId, inCategory } from './data.js?v=20261121d';
 
 const DIM = { p: [960, 1200], c: [960, 1200], m: [1280, 960], photo: [1024, 1024], crop: [900, 900], f: [1120, 1120], origin: [960, 1200], wide: [1600, 900] };
 export function img(name, alt, { cls = '', eager = false, sizes = '' } = {}) {

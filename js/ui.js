@@ -1,7 +1,7 @@
 // ARDEM — interface behaviours: navigation, menu, cursor, magnetic buttons, reservation modal, forms.
-import { PRODUCTS, byId, RING_SIZES } from './data.js?v=20261121c';
-import { submitRequest } from './store.js?v=20261121c';
-import { esc } from './views.js?v=20261121c';
+import { PRODUCTS, byId, RING_SIZES } from './data.js?v=20261121d';
+import { submitRequest } from './store.js?v=20261121d';
+import { esc } from './views.js?v=20261121d';
 
 export const reducedMotion = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
 const finePointer = () => matchMedia('(hover: hover) and (pointer: fine)').matches;

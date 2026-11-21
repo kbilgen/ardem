@@ -1,7 +1,7 @@
 // ARDEM — jewelry models assembled from procedural parts
-import { Mesh } from './renderer.js?v=20261121c';
-import * as G from './geometry.js?v=20261121c';
-import { m4, v3 } from './math.js?v=20261121c';
+import { Mesh } from './renderer.js?v=20261121d';
+import * as G from './geometry.js?v=20261121d';
+import { m4, v3 } from './math.js?v=20261121d';
 
 const TAU = Math.PI * 2;
 const I = m4.identity();
