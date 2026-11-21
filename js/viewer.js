@@ -1,7 +1,7 @@
 // ARDEM — live 3D showcase: drag to rotate, animated metal/stone transitions.
-import { Renderer } from './renderer.js';
-import { BUILDERS, METALS, STONES, VARIANTS, materialState, blendState, shadowMesh } from './jewels.js';
-import { m4, clamp, easeInOutCubic } from './math.js';
+import { Renderer } from './renderer.js?v=20261121c';
+import { BUILDERS, METALS, STONES, VARIANTS, materialState, blendState, shadowMesh } from './jewels.js?v=20261121c';
+import { m4, clamp, easeInOutCubic } from './math.js?v=20261121c';
 
 const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
 

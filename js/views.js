@@ -1,9 +1,9 @@
 // ARDEM — page templates. Each view renders HTML; app.js mounts behaviour.
-import { PRODUCTS, COLLECTIONS, SIGNATURE_VARIANTS, PROCESS, MARQUEE, byId, inCategory } from './data.js';
+import { PRODUCTS, COLLECTIONS, SIGNATURE_VARIANTS, PROCESS, MARQUEE, byId, inCategory } from './data.js?v=20261121c';
 
 const DIM = { p: [960, 1200], c: [960, 1200], m: [1280, 960], photo: [1024, 1024], crop: [900, 900], f: [1120, 1120], origin: [960, 1200], wide: [1600, 900] };
 export function img(name, alt, { cls = '', eager = false, sizes = '' } = {}) {
-  const key = name.startsWith('origin-wide') ? 'wide' : name.split('-')[0];
+  const key = name.startsWith('origin-thread') ? 'wide' : name.split('-')[0];
   const [w, h] = DIM[key] || [960, 1200];
   return `<img src="img/${name}.webp" alt="${esc(alt)}" width="${w}" height="${h}"${cls ? ` class="${cls}"` : ''} ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async"${sizes ? ` sizes="${sizes}"` : ''}>`;
 }
@@ -78,12 +78,12 @@ export function home() {
         <p class="origin__note">From that thread comes every curve of the house: the twist of the Thread Band, the line of a rivière, the claws that hold a stone up to the light.</p>
       </div>
       <figure class="origin__fig" data-parallax="0.12">
-        ${img('origin-drop', 'Molten gold pouring from a dark crucible in a single glowing stream')}
+        ${img('origin-pour', 'Molten gold pouring from a dark crucible in a single glowing stream')}
         <figcaption class="label"><span>The first pour</span><span>Molten gold leaving the crucible</span></figcaption>
       </figure>
     </div>
     <figure class="origin__wide" data-parallax="-0.06">
-      ${img('origin-wide', 'The poured gold drawn out into a glowing thread, floating through darkness')}
+      ${img('origin-thread', 'The poured gold drawn out into a glowing thread, floating through darkness')}
     </figure>
   </section>
 
@@ -309,7 +309,7 @@ export function story() {
   ${pageHead([{ label: 'Our story' }], 'Beyond Jewelry. A Personal Legacy.', 'ARDEM makes jewelry for the moments people keep. A piece worth wearing every day should still feel right decades from now.')}
   <section class="story" data-nav="light">
     <div class="wrap story__grid">
-      <figure class="story__img">${img('origin-drop', 'Molten gold pouring from a crucible')}</figure>
+      <figure class="story__img">${img('origin-pour', 'Molten gold pouring from a crucible')}</figure>
       <div class="story__text">
         <h2>The thread</h2>
         <p>Every ARDEM piece begins with the same image: gold poured from the crucible in a single line, then drawn into a thread. Something molten and fleeting, given form through patience, becoming something lasting.</p>

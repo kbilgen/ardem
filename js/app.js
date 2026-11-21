@@ -1,8 +1,8 @@
 // ARDEM — application shell: routing, scroll choreography, view mounting.
-import * as V from './views.js';
-import { byId, COLLECTIONS, SIGNATURE_VARIANTS } from './data.js';
-import { initNav, initCursor, initMagnetic, initReservation, mountAppointment, reducedMotion, toast } from './ui.js';
-import { clamp, smooth, lerp } from './math.js';
+import * as V from './views.js?v=20261121c';
+import { byId, COLLECTIONS, SIGNATURE_VARIANTS } from './data.js?v=20261121c';
+import { initNav, initCursor, initMagnetic, initReservation, mountAppointment, reducedMotion, toast } from './ui.js?v=20261121c';
+import { clamp, smooth, lerp } from './math.js?v=20261121c';
 
 const view = document.getElementById('view');
 const curtain = document.querySelector('.curtain');
@@ -86,7 +86,7 @@ function radiogroup(group, onChange) {
 
 /* ---------- lazy 3D ---------- */
 let viewerMod = null;
-const loadViewer = () => (viewerMod ||= import('./viewer.js'));
+const loadViewer = () => (viewerMod ||= import('./viewer.js?v=20261121c'));
 
 /* ---------- HOME ---------- */
 async function mountHome(root) {
@@ -120,7 +120,7 @@ async function mountHome(root) {
     cue.style.opacity = (s.appear * (1 - smooth(0.0, 0.06, s.p))).toFixed(3);
   };
   if (hasGL) {
-    const { Hero } = await import('./hero.js');
+    const { Hero } = await import('./hero.js?v=20261121c');
     const h = new Hero(hero.querySelector('.hero__gl'), { onFrame: paint });
     if (rm) { h.setProgress(1); h.p = 1; }
     const io = new IntersectionObserver((es) => (es[0].isIntersecting ? h.start() : h.stop()));

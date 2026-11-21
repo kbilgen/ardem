@@ -1,10 +1,10 @@
 // ARDEM — the signature hero: gold poured from a crucible becomes a thread,
 // the thread is turned into a ring, the ring is set with a stone.
 // Driven by scroll progress (0..1).
-import { Renderer, Mesh } from './renderer.js';
-import { buildSolitaire, materialState } from './jewels.js';
-import * as G from './geometry.js';
-import { m4, v3, smooth, clamp, lerp, mix3, easeOutCubic } from './math.js';
+import { Renderer, Mesh } from './renderer.js?v=20261121c';
+import { buildSolitaire, materialState } from './jewels.js?v=20261121c';
+import * as G from './geometry.js?v=20261121c';
+import { m4, v3, smooth, clamp, lerp, mix3, easeOutCubic } from './math.js?v=20261121c';
 
 const TAU = Math.PI * 2;
 const N = 300;       // samples along the thread

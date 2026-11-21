@@ -29,6 +29,16 @@ img/              rendered stills (p-*, m-*, c-*, origin-*) and photographs (pho
 python3 -m http.server 8000   # then open http://localhost:8000
 ```
 
+## Releasing changes
+
+Files are not content-hashed. When you change JS or CSS, bump the `?v=` tag on the imports (all `js/*.js` files and `index.html`) so browsers never mix old and new modules:
+
+```
+sed -i -E "s/\?v=[0-9a-z]+/?v=NEW_TAG/g" index.html js/*.js
+```
+
+When an image changes, give it a new file name.
+
 ## Reservations
 
 `js/store.js` saves requests to the Claude artifact database when the page runs as a Claude artifact. Anywhere else (including Vercel) it keeps the request in the visitor's browser and the confirmation says so. To receive real requests, replace `submitRequest()` with a call to your own endpoint (for example a Vercel Function that emails the advisor or writes to a database).
