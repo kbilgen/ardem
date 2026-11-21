@@ -1,0 +1,38 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "incremental": false,
+    "plugins": [],
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "next/link": [
+        "./preview/shims/link.tsx"
+      ],
+      "next/navigation": [
+        "./preview/shims/navigation.ts"
+      ],
+      "next": [
+        "./preview/shims/next.ts"
+      ]
+    },
+    "types": [
+      "node"
+    ]
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "preview/**/*.ts",
+    "preview/**/*.tsx",
+    "next.config.ts",
+    "preview/css.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "out",
+    "out-preview",
+    ".preview-cache"
+  ]
+}
