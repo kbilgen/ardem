@@ -99,7 +99,7 @@ async function mountHome(root) {
   const caps = [...hero.querySelectorAll('.hero__cap')];
   const reveal = hero.querySelector('[data-hero-reveal]');
   const cue = hero.querySelector('[data-hero-cue]');
-  const capWin = [[0.015, 0.15], [0.2, 0.37], [0.47, 0.64], [0.78, 0.89]];
+  const capWin = [[0.0, 0.055], [0.24, 0.37], [0.47, 0.64], [0.78, 0.89]];
   const onyx = [22, 18, 15], ivory = [244, 239, 228];
   let hp = rm ? 1 : 0;
   const paint = (s) => {
@@ -109,7 +109,7 @@ async function mountHome(root) {
     hero.dataset.navLive = m > 0.55 ? 'light' : 'dark';
     caps.forEach((c, i) => {
       const [a, b] = capWin[i];
-      const o = rm ? 0 : smooth(a, a + 0.03, s.p) * (1 - smooth(b - 0.03, b, s.p));
+      const o = rm ? 0 : (i === 0 ? s.appear : smooth(a, a + 0.03, s.p)) * (1 - smooth(b - 0.03, b, s.p));
       c.style.opacity = o.toFixed(3);
       c.style.transform = `translateY(${((1 - o) * 10).toFixed(1)}px)`;
     });

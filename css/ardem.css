@@ -143,7 +143,7 @@ main { outline: none; }
 .hero__sticky { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; background: var(--onyx); }
 .hero__gl { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 .hero__sticky::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(120% 80% at 50% 45%, transparent 55%, rgba(0, 0, 0, .28)); opacity: calc(1 - var(--rv, 0)); }
-.hero__caps { position: absolute; left: 0; right: 0; bottom: 16vh; text-align: center; pointer-events: none; }
+.hero__caps { position: absolute; left: 0; right: 0; bottom: max(17vh, 160px); text-align: center; pointer-events: none; }
 .hero__cap { position: absolute; left: 0; right: 0; padding: 0 var(--pad); font: italic 300 clamp(22px, 2.6vw, 34px)/1.3 var(--serif); color: rgba(244, 239, 228, .9); opacity: 0; letter-spacing: .01em; }
 .hero__reveal { position: absolute; left: 0; right: 0; bottom: clamp(28px, 6vh, 72px); display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 var(--pad); opacity: 0; visibility: hidden; color: var(--ink); }
 .hero__word { font: 300 min(9.5vw, 15vh)/.9 var(--serif); letter-spacing: .3em; margin-right: -.3em; color: var(--onyx); }
@@ -579,6 +579,7 @@ html:not(.reduced) .pcard:not(.is-in) { opacity: 0; transform: translateY(30px);
   .hero__ctas .btn { flex: 1 1 100%; }
   .hero__skip { bottom: 16px; }
   .hero__cue { bottom: 64px; }
+  .hero__caps { bottom: max(26vh, 200px); }
   .nav .btn--ghost { display: none; }
   .nav__word { font-size: 17px; }
   .tones { grid-template-columns: repeat(2, minmax(0, 1fr)); }

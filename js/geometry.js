@@ -340,3 +340,63 @@ export function arcLengthPoints(fn, count, samples = 600) {
   }
   return { points: out, length: total };
 }
+
+/* ---------- lathe (revolved profile) with optional per-vertex deform ---------- */
+export function computeNormals(pos, idx) {
+  const n = new Float32Array(pos.length);
+  for (let i = 0; i < idx.length; i += 3) {
+    const a = idx[i] * 3, b = idx[i + 1] * 3, c = idx[i + 2] * 3;
+    const ux = pos[b] - pos[a], uy = pos[b + 1] - pos[a + 1], uz = pos[b + 2] - pos[a + 2];
+    const vx = pos[c] - pos[a], vy = pos[c + 1] - pos[a + 1], vz = pos[c + 2] - pos[a + 2];
+    const nx = uy * vz - uz * vy, ny = uz * vx - ux * vz, nz = ux * vy - uy * vx;
+    for (const k of [a, b, c]) { n[k] += nx; n[k + 1] += ny; n[k + 2] += nz; }
+  }
+  for (let i = 0; i < n.length; i += 3) {
+    const l = Math.hypot(n[i], n[i + 1], n[i + 2]) || 1;
+    n[i] /= l; n[i + 1] /= l; n[i + 2] /= l;
+  }
+  return n;
+}
+
+export function lathe(profile, seg = 64, deform = null) {
+  const pos = [], idx = [];
+  for (let i = 0; i < profile.length; i++) {
+    const [r, y] = profile[i];
+    for (let j = 0; j < seg; j++) {
+      const a = (j / seg) * TAU;
+      let p = [Math.cos(a) * r, y, Math.sin(a) * r];
+      if (deform) p = deform(p, a, i);
+      pos.push(p[0], p[1], p[2]);
+    }
+  }
+  for (let i = 0; i < profile.length - 1; i++) {
+    for (let j = 0; j < seg; j++) {
+      const j2 = (j + 1) % seg;
+      const a = i * seg + j, b = (i + 1) * seg + j, c = (i + 1) * seg + j2, d = i * seg + j2;
+      idx.push(a, b, d, b, c, d);
+    }
+  }
+  const positions = new Float32Array(pos);
+  const indices = new Uint16Array(idx);
+  return { positions, normals: computeNormals(positions, indices), indices };
+}
+
+/** A pouring crucible: thick walls, rounded base, a lip pulled out toward +x. Height ~1, centred on y=0. */
+export function crucible(seg = 72) {
+  const profile = [
+    [0.0, -0.5], [0.16, -0.5], [0.26, -0.48], [0.32, -0.43], [0.35, -0.34],
+    [0.39, 0.05], [0.43, 0.38], [0.455, 0.47], [0.45, 0.51], [0.42, 0.525],
+    [0.395, 0.5], [0.37, 0.4], [0.33, 0.02], [0.3, -0.27], [0.25, -0.36], [0.12, -0.39], [0.0, -0.39],
+  ];
+  const lip = (p, a) => {
+    const d = Math.max(0, Math.cos(a) - 0.8) / 0.2; // 0..1 near the spout
+    const k = d * d * Math.max(0, Math.min(1, (p[1] - 0.15) / 0.35));
+    return [p[0] + Math.cos(a) * 0.17 * k, p[1] - 0.06 * k, p[2] + Math.sin(a) * 0.04 * k];
+  };
+  return lathe(profile, seg, lip);
+}
+
+/** Molten surface inside the crucible: a gently domed disc. */
+export function pool(radius = 0.36, seg = 64) {
+  return lathe([[0, 0.012], [radius * 0.5, 0.01], [radius, 0]], seg, (p, a) => [p[0] + Math.max(0, Math.cos(a) - 0.8) * 0.4 * (Math.hypot(p[0], p[2]) / radius), p[1], p[2]]);
+}

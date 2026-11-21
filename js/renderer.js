@@ -90,8 +90,14 @@ uniform vec3 uF0;
 uniform float uRough;
 uniform float uHeat;
 uniform float uFade;
+uniform float uTime;
+uniform vec3 uAlbedo;
+uniform vec3 uPLPos;
+uniform vec3 uPLCol;
+uniform float uPLMask;
 ${ENV}
 out vec4 o;
+float hsh(vec3 p){ return fract(sin(dot(p, vec3(127.1, 311.7, 74.7))) * 43758.5453); }
 void main(){
   vec3 N = normalize(vN);
   vec3 V = normalize(uCam - vW);
@@ -107,12 +113,33 @@ void main(){
   float NdH = max(dot(N, H), 0.0);
   float D = a2 / (3.14159 * pow(NdH * NdH * (a2 - 1.0) + 1.0, 2.0));
   col += F * min(D, 400.0) * 0.012 * max(dot(N, Ld), 0.0);
-  // molten heat: blackbody glow that cools into polished metal
+  // dielectric bodies (the crucible): diffuse from the room and from the molten pool
+  if (uAlbedo.r + uAlbedo.g + uAlbedo.b > 0.0) {
+    float grain = 0.78 + 0.22 * hsh(floor(vO * 140.0));
+    vec3 Lp = uPLPos - vW; float d2 = dot(Lp, Lp); Lp = normalize(Lp);
+    // light from the molten pool reaches only the inner wall (no shadow maps: mask by normal side)
+    vec3 nObj = transpose(vRot) * normalize(vN);
+    float radial = dot(normalize(vO.xz + 1e-5), nObj.xz) * uPLMask;
+    float inner = uPLMask == 0.0 ? 1.0 : smoothstep(0.15, -0.35, radial) + smoothstep(0.42, 0.52, vO.y) * 0.35;
+    vec3 diff = studio(N, 1.0) * 0.22 + uPLCol * inner * max(dot(N, Lp), 0.0) / (0.35 + d2 * 1.6);
+    col += uAlbedo * grain * diff;
+  }
+  // molten gold: a flowing blackbody glow, bright yellow at the core, orange at the edges,
+  // cooling smoothly into polished metal as uHeat falls
   float h = clamp(uHeat, 0.0, 1.0);
-  vec3 hot = mix(vec3(0.95, 0.26, 0.03), vec3(1.0, 0.56, 0.16), h * h);
-  float rim = pow(1.0 - NdV, 1.6);
-  vec3 glow = hot * (0.18 + 0.95 * h) * (0.55 + 0.7 * rim);
-  col = mix(col, col * vec3(1.0, 0.8, 0.55) * 0.8 + glow, smoothstep(0.02, 0.55, h));
+  if (h > 0.001) {
+    float flow = sin(vO.y * 11.0 - uTime * 2.6 + sin(vO.x * 7.0 + uTime) * 1.4) * 0.5 + 0.5;
+    flow = mix(flow, sin(vO.x * 17.0 + vO.z * 13.0 - uTime * 1.9) * 0.5 + 0.5, 0.35);
+    float core = smoothstep(0.05, 0.85, NdV);
+    vec3 edgeC = vec3(0.62, 0.11, 0.01);
+    vec3 midC = vec3(1.0, 0.36, 0.035);
+    vec3 coreC = vec3(1.0, 0.6, 0.15);
+    vec3 emis = mix(edgeC, midC, smoothstep(0.0, 0.55, core));
+    emis = mix(emis, coreC, smoothstep(0.5, 1.0, core) * (0.65 + 0.35 * flow));
+    emis *= (0.42 + 0.78 * h) * (0.85 + 0.3 * flow);
+    vec3 sheen = studio(R, 0.12) * F * 0.18;
+    col = mix(col, emis + sheen, smoothstep(0.0, 0.6, h));
+  }
   o = vec4(outColor(col) * uFade, uFade);
 }`;
 
@@ -510,6 +537,10 @@ export class Renderer {
     gl.uniform3fv(prog.u.uF0, mat.f0);
     gl.uniform1f(prog.u.uRough, mat.rough ?? 0.08);
     gl.uniform1f(prog.u.uHeat, mat.heat || 0);
+    gl.uniform3fv(prog.u.uAlbedo, mat.albedo || [0, 0, 0]);
+    gl.uniform3fv(prog.u.uPLPos, mat.plPos || [0, 0, 0]);
+    gl.uniform3fv(prog.u.uPLCol, mat.plCol || [0, 0, 0]);
+    gl.uniform1f(prog.u.uPLMask, mat.plMask || 0);
     this._blendFor(mat);
     mesh.draw();
   }

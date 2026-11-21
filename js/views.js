@@ -48,8 +48,8 @@ export function home() {
     <div class="hero__sticky">
       <canvas class="hero__gl" aria-hidden="true"></canvas>
       <div class="hero__caps" aria-hidden="true">
-        <p class="hero__cap">It begins with a single drop.</p>
-        <p class="hero__cap">Drawn into a thread of light.</p>
+        <p class="hero__cap">It begins in the crucible.</p>
+        <p class="hero__cap">Poured into a single line of light.</p>
         <p class="hero__cap">Turned, patiently, into form.</p>
         <p class="hero__cap">Then set with a stone that holds the light.</p>
       </div>
@@ -74,16 +74,16 @@ export function home() {
     </svg>
     <div class="wrap origin">
       <div class="origin__copy">
-        ${chapterHead('01', 'The Origin', 'Every Masterpiece Begins With a Spark.', 'Before there is a ring, there is heat and light: a single drop of gold, softened until it can be drawn into a thread as fine as a line of ink. Everything ARDEM makes begins in that moment.').replace('class="ch__title"', 'class="ch__title" id="ch1"')}
+        ${chapterHead('01', 'The Origin', 'Every Masterpiece Begins With a Spark.', 'Before there is a ring, there is heat and light: gold melted in the crucible and poured in a single glowing line, then drawn into a thread as fine as a line of ink. Everything ARDEM makes begins in that moment.').replace('class="ch__title"', 'class="ch__title" id="ch1"')}
         <p class="origin__note">From that thread comes every curve of the house: the twist of the Thread Band, the line of a rivière, the claws that hold a stone up to the light.</p>
       </div>
       <figure class="origin__fig" data-parallax="0.12">
-        ${img('origin-drop', 'A drop of molten gold drawn into a fine thread against darkness')}
-        <figcaption class="label"><span>The first drop</span><span>Molten gold, drawn into a thread</span></figcaption>
+        ${img('origin-drop', 'Molten gold pouring from a dark crucible in a single glowing stream')}
+        <figcaption class="label"><span>The first pour</span><span>Molten gold leaving the crucible</span></figcaption>
       </figure>
     </div>
     <figure class="origin__wide" data-parallax="-0.06">
-      ${img('origin-wide', 'A glowing golden thread floating through darkness')}
+      ${img('origin-wide', 'The poured gold drawn out into a glowing thread, floating through darkness')}
     </figure>
   </section>
 
@@ -309,10 +309,10 @@ export function story() {
   ${pageHead([{ label: 'Our story' }], 'Beyond Jewelry. A Personal Legacy.', 'ARDEM makes jewelry for the moments people keep. A piece worth wearing every day should still feel right decades from now.')}
   <section class="story" data-nav="light">
     <div class="wrap story__grid">
-      <figure class="story__img">${img('origin-drop', 'A drop of molten gold drawn into a thread')}</figure>
+      <figure class="story__img">${img('origin-drop', 'Molten gold pouring from a crucible')}</figure>
       <div class="story__text">
         <h2>The thread</h2>
-        <p>Every ARDEM piece begins with the same image: a single drop of gold, drawn into a thread. Something small and molten, given form through patience, becoming something lasting.</p>
+        <p>Every ARDEM piece begins with the same image: gold poured from the crucible in a single line, then drawn into a thread. Something molten and fleeting, given form through patience, becoming something lasting.</p>
         <p>That thread runs through everything we design. It is the twist of the Thread Band, the unbroken line of a rivière, the slender claws that raise a stone toward the light.</p>
       </div>
     </div>
